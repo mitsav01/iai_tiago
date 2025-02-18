@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 project(iai_tiago_tools)
 
 find_package(ament_cmake REQUIRED)
-find_package(rclcpy REQUIRED)
+find_package(ament_cmake_python REQUIRED)
 
 install(DIRECTORY
         script
