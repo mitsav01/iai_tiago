@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import rospy
+import rclpy
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Joy
 import numpy as np
@@ -15,21 +15,21 @@ class MUH:
         self.joystick_active = False
         self.cmd_vel_called = False
         self.giskard = GiskardWrapper()
-        self.joy_sub = rospy.Subscriber('/joy', Joy, self.joy_cb)
-        self.cmd_vel_sub = rospy.Subscriber('/joy_vel', Twist, self.cmd_vel_cb)
-        self.timer = rospy.Timer(rospy.Duration(1), self.timer_cb)
+        self.joy_sub = rclpy.Subscriber('/joy', Joy, self.joy_cb)
+        self.cmd_vel_sub = rclpy.Subscriber('/joy_vel', Twist, self.cmd_vel_cb)
+        self.timer = rclpy.Timer(rclpy.Duration(1), self.timer_cb)
 
     def timer_cb(self, msg):
         if self.cmd_vel_called:
             self.cmd_vel_called = False
         elif self.joystick_active:
-            rospy.loginfo('joy stick deactivated')
+            rclpy.loginfo('joy stick deactivated')
             self.joystick_active = False
 
     def cmd_vel_cb(self, msg):
         if not self.joystick_active:
-            rospy.logwarn('joystick got activated')
-            rospy.logwarn(self.cancel_msg)
+            rclpy.logwarn('joystick got activated')
+            rclpy.logwarn(self.cancel_msg)
             self.giskard.cancel_all_goals()
         self.joystick_active = True
         self.cmd_vel_called = True
@@ -38,10 +38,10 @@ class MUH:
         buttons = np.array(joy_msg.buttons)
         axis = np.array(joy_msg.axes)
         if np.any(buttons[:4] != 0) or np.any(axis[-2:] != 0):
-            rospy.logwarn(self.cancel_msg)
+            rclpy.logwarn(self.cancel_msg)
             self.giskard.cancel_all_goals()
 
 
-rospy.init_node('giskard_e_stop')
+rclpy.init_node('giskard_e_stop')
 muh = MUH()
-rospy.spin()
+rclpy.spin()
