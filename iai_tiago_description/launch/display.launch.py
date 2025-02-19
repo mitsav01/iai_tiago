@@ -14,8 +14,8 @@ def generate_launch_description():
     robot_description = Command(
         [FindExecutable(name='xacro'), ' ', tiago_xacro_file])
 
-    rviz_file = os.path.join(get_package_share_directory('iai_boxy_base'), 'rviz2',
-                              'boxy.rviz')
+    rviz_file = os.path.join(get_package_share_directory('iai_tiago_description'), 'rviz2',
+                              'default.rviz')
     
     collision_parameter_file = PathJoinSubstitution([FindPackageShare('tiago_dual_description'),'config','collision','collision_parameters.yaml'])
     return LaunchDescription([
