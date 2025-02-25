@@ -4,7 +4,7 @@ project(iai_tiago_bringup)
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY config launch
+  DIRECTORY configs launch
   DESTINATION share/${PROJECT_NAME}
 )
 

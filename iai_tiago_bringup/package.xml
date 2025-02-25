@@ -7,7 +7,11 @@
   <license>TODO</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+
+  <exec_depend>rclpy</exec_depend>
+
+
   <export>
-    <build_type>ament_cmake</build>
-  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
 </package>

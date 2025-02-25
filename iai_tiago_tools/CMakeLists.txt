@@ -9,7 +9,7 @@ install(DIRECTORY
         DESTINATION share/${PROJECT_NAME}/)
       
 install(PROGRAMS
-        scripts/giskard_e_stop.py
+        script/giskard_e_stop.py
         DESTINATION lib/${PROJECT_NAME})
 
 ament_package()

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>iai_tiago</name>
+  <version>0.0.0</version>
+  <description>The iai_tiago package</description>
+  <maintainer email="jesch@todo.todo">jesch</maintainer>
+  <license>Apache License 2.0</license>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>custom_end_effector</exec_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <metapackage/>
+  </export>
+</package>
