@@ -29,15 +29,15 @@ def generate_launch_description():
                 'robot_description': ParameterValue(robot_description,value_type=str)}]
         ),
         
-        # Load collision parameters from YAML file
-        Node(
-            package='tiago_dual_description',
-            executable='collision_parameters_loader',
-            name='collision_parameters_loader',
-            output='screen',
-            parameters=[{
-                'collision_parameters': collision_parameter_file}]
-        ),
+        # # Load collision parameters from YAML file
+        # Node(
+        #     package='tiago_dual_description',
+        #     executable='collision_parameters_loader',
+        #     name='collision_parameters_loader',
+        #     output='screen',
+        #     parameters=[{
+        #         'collision_parameters': collision_parameter_file}]
+        # ),
 
         # Joint state publisher GUI
         Node(

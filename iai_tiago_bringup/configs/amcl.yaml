@@ -1,50 +1,46 @@
-# Odometry model:
-odom_model_type: "diff-corrected"
-odom_alpha1: 2.5
-odom_alpha2: 1.5
-odom_alpha3: 3.0
-odom_alpha4: 0.5
+amcl:
+  ros__parameters:
+    # Odometry model
+    robot_model_type: "differential"
+    alpha1: 2.5
+    alpha2: 1.5
+    alpha3: 3.0
+    alpha4: 0.5
+    
+    # Particle filter
+    min_particles: 500
+    max_particles: 1500
+    pf_err: 0.05  # KLD error
+    pf_z: 0.95    # KLD z
+    update_min_d: 0.005
+    update_min_a: 0.005
+    resample_interval: 1
+    
+    # Laser model
+    laser_model_type: "beam"
+    laser_max_range: -1.0
+    laser_min_range: -1.0
+    max_beams: 50
+    z_hit: 0.89
+    z_short: 0.03
+    z_max: 0.05
+    z_rand: 0.03
+    sigma_hit: 0.1
+    lambda_short: 0.1
+    laser_likelihood_max_dist: 2.0
+    
+    # Update/Rate params
+    transform_tolerance: 0.27
 
-# Particle filter:
-min_particles: 500
-max_particles: 1500
-kld_err: 0.05
-kld_z: 0.95
-update_min_d: 0.005
-update_min_a: 0.005
-resample_interval: 1
-# converge_dist_threshold: 0.5  # <- what the hell is this?
+    
+    # Recovery
+    recovery_alpha_slow: 0.0
+    recovery_alpha_fast: 0.0
+    
+    # Frames
+    base_frame_id: "base_footprint"
+    odom_frame_id: "odom"
+    global_frame_id: "map"
 
-# Laser model:
-laser_model_type: "beam"
-laser_max_range: -1.0  # use reported max range (default)
-laser_min_range: -1.0  # use reported min range (default)
-laser_max_beams: 50
-laser_z_hit: 0.89
-laser_z_short: 0.03
-laser_z_max: 0.05
-laser_z_rand: 0.03
-laser_sigma_hit: 0.1
-laser_lambda_short: 0.1
-laser_likelihood_max_dist: 2.0
-
-# Update/Rate params:
-transform_tolerance: 0.27
-gui_publish_rate: 10.0
-
-# Recovery: disable recovery to avoid jumps
-recovery_alpha_slow: 0.0
-recovery_alpha_fast: 0.0
-
-# Frames:
-base_frame_id: "base_footprint"
-odom_frame_id: "odom"
-global_frame_id: "map"
-
-# Initial pose:
-save_pose_rate: -1.0  # disabled (< 0.0)
-
-# Avoid unknowns:
-avoid_unknown: true
-use_map_topic: true
-first_map_only: false
+    # Map handling
+    always_reset_initial_pose: false
