@@ -6,7 +6,7 @@ from launch.actions import DeclareLaunchArgument,LogInfo
 from launch.substitutions import Command, FindExecutable, LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
-
+from launch_ros.descriptions import ParameterValue
 def generate_launch_description():
 
     tiago_xacro_file = os.path.join(get_package_share_directory('iai_tiago_description'), 'urdf',
@@ -26,7 +26,7 @@ def generate_launch_description():
             name='robot_state_publisher',
             output='screen',
             parameters=[{
-                'robot_description': robot_description}]
+                'robot_description': ParameterValue(robot_description,value_type=str)}]
         ),
         
         # Load collision parameters from YAML file
@@ -51,7 +51,6 @@ def generate_launch_description():
         
         # Additional useful log message to confirm launch
         LogInfo(
-            condition=LaunchConfiguration('robot_description'),
             msg="Robot description and parameters have been loaded successfully!"
         )
     ])
