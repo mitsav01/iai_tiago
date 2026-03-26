@@ -6,56 +6,54 @@ This repository provides the **iai_tiago** ROS2 workspace along with all its req
 
 ```
 iai_tiago
-    ├── dep (vendored dependencies)
-    ├── iai_robotiq_gripper
-    ├── iai_tiago
-    ├── iai_tiago_bringup
-    ├── iai_tiago_description
-    ├── iai_tiago_jazzy.repos
-    ├── iai_tiago_tools
-    └── readme.md
+├── dep                  # Vendored dependencies
+├── iai_robotiq_gripper  # Robotiq gripper packages
+├── iai_tiago            # Core Tiago packages
+├── iai_tiago_bringup    # Launch and bringup files
+├── iai_tiago_description# URDF and description files
+├── iai_tiago_jazzy.repos# Repository manifest for vcs import
+├── iai_tiago_tools      # Utility and tool packages
+└── readme.md            # This documentation
 ```
 
 ## Getting Started
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
-mkdir -p ~/tiago_ws/src
-cd ~/tiago_ws/src
-
 git clone https://github.com/mitsav01/iai_tiago.git
+cd iai_tiago
 ```
 
-### 2. Import vendored dependencies
+> **Note:** If you have already installed dependencies, you can skip steps 2 and 3.
+
+### 2. Import Vendored Dependencies
 
 ```bash
-cd iai_tiago
-vcs import dep < iai_tiago.repos
+mkdir dep
+vcs import dep < iai_tiago_jazzy.repos
 ```
 
 This will download all required external repositories into the `dep` directory.
 
-### 3. Install system dependencies
+### 3. Install System Dependencies
 
 ```bash
 cd ..
-rosdep install --from-paths src --ignore-src -r -y
+rosdep install --from-paths iai_tiago --ignore-src -r -y
 ```
 
-### 4. Build the workspace
+### 4. Build the Workspace
 
 ```bash
 colcon build --symlink-install
 source install/setup.bash
 ```
 
-### 5. Verify installation
+### 5. Verify Installation
 
-Try launching a simple package, e.g.:
+Launch a simple package to ensure everything is set up correctly:
 
 ```bash
 ros2 launch iai_tiago_description display.launch.py
 ```
-
----
