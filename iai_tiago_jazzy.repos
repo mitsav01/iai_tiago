@@ -1,0 +1,61 @@
+repositories:
+
+  ros2_robotiq_gripper:
+    type: git
+    url: https://github.com/PickNikRobotics/ros2_robotiq_gripper.git
+    version: main
+    dest: dep/ros2_robotiq_gripper
+
+  launch_pal:
+    type: git
+    url: https://github.com/pal-robotics/launch_pal.git
+    version: master
+    dest: dep/launch_pal
+
+  pal_urdf_utils:
+    type: git
+    url: https://github.com/pal-robotics/pal_urdf_utils.git
+    version: humble-devel
+    dest: dep/pal_urdf_utils
+
+  pmb2_robot:
+    type: git
+    url: https://github.com/pal-robotics/pmb2_robot.git
+    version: humble-devel
+    dest: dep/pmb2_robot
+
+  tiago_robot:
+    type: git
+    url: https://github.com/pal-robotics/tiago_robot.git
+    version: humble-devel
+    dest: dep/tiago_robot
+
+  tiago_dual_robot:
+    type: git
+    url: https://github.com/pal-robotics/tiago_dual_robot.git
+    version: humble-devel
+    dest: dep/tiago_dual_robot
+
+  pal_hey5:
+    type: git
+    url: https://github.com/pal-robotics/pal_hey5.git
+    version: humble-devel
+    dest: dep/pal_hey5
+
+  pal_robotiq_gripper:
+    type: git
+    url: https://github.com/pal-robotics/pal_robotiq_gripper.git
+    version: humble-devel
+    dest: dep/pal_robotiq_gripper
+
+  launch_param_builder:
+    type: git
+    url: https://github.com/PickNikRobotics/launch_param_builder.git
+    version: main
+    dest: dep/launch_param_builder
+
+  serial:
+    type: git
+    url: https://github.com/PickNikRobotics/serial.git
+    version: ros2
+    dest: dep/serial
